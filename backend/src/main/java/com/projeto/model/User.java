@@ -2,9 +2,9 @@ package com.projeto.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import jakarta.persistence.Id; // Certifique-se que esta está lá
-import jakarta.persistence.GeneratedValue; // E esta também
-import jakarta.persistence.GenerationType; // E esta
+import jakarta.persistence.Id; 
+import jakarta.persistence.GeneratedValue; 
+import jakarta.persistence.GenerationType; 
 
 
 @Entity
@@ -12,7 +12,7 @@ import jakarta.persistence.GenerationType; // E esta
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Esta é a linha CRÍTICA
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
     private String nome;

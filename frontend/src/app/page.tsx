@@ -3,7 +3,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-import Register from "@/app/Register/page"; // seu formulário
+import Register from "@/app/Register/page";
 import ListUsers from "@/app/ListarUsuarios/page";
 import LoginPage from "@/app/login/page"
 

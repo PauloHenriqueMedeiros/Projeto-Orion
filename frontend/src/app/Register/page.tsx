@@ -103,7 +103,6 @@ const Message = styled.div`
   }
 `;
 
-// Definindo o tipo para os dados do formulário
 interface FormData {
   nome: string;
   gmail: string;
@@ -115,17 +114,16 @@ interface FormData {
   senha: string;
 }
 
-// Definindo o tipo para os erros de validação
 
 interface ValidationErrors {
-  idade?: string; // Opcional, pois pode não haver erro
-  numero?: string; // Opcional, pois pode não haver erro
+  idade?: string; 
+  numero?: string; 
 }
 
 // Definindo o tipo para a mensagem geral
 interface GeneralMessage {
   text: string;
-  type: "success" | "error" | ""; // Tipos específicos permitidos
+  type: "success" | "error" | ""; 
 }
 
 export default function App() {
@@ -140,14 +138,14 @@ export default function App() {
     senha: ""
   });
 
-  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({}); // Inicializar como objeto vazio ou com chaves vazias
+  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({});
   const [generalMessage, setGeneralMessage] = useState<GeneralMessage>({ text: "", type: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Limpa o erro de validação para o campo atual ao digitar
+
     setValidationErrors(prevErrors => {
       const newErrors = { ...prevErrors };
-      delete newErrors[e.target.name as keyof ValidationErrors]; // Remove a chave se existir
+      delete newErrors[e.target.name as keyof ValidationErrors]; 
       return newErrors;
     });
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -163,7 +161,7 @@ export default function App() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    let errors: ValidationErrors = {}; // Explicitamente tipado como ValidationErrors
+    let errors: ValidationErrors = {}; 
     const idadeNum = parseInt(formData.idade);
     const numeroNum = parseInt(formData.numero);
 
@@ -180,8 +178,7 @@ export default function App() {
       return;
     }
 
-    // Limpa quaisquer erros de validação antigos se a validação passou
-    setValidationErrors({}); // Corrigido para corresponder ao tipo ValidationErrors
+    setValidationErrors({}); 
     
     try {
       const response = await fetch("http://localhost:8080/usuarios", {
