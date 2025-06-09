@@ -1,11 +1,8 @@
-// src/app/usuarios/page.tsx
-'use client'; // Muito importante para componentes interativos no App Router
+'use client';
 
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-// Copie TODOS os seus styled-components (Container, Title, Table, Th, Td, DeleteButton, ButtonGroup, Message) para cá
-// Para simplificar, vou omitir a repetição de todos eles aqui, mas eles devem estar no seu arquivo.
 
 const Container = styled.div`
   max-width: 800px;
@@ -99,7 +96,7 @@ interface User {
   senha: string;
 }
 
-export default function UsuariosPage() { // Renomeado de UserList para UsuariosPage
+export default function UsuariosPage() {
   const [usuarios, setUsuarios] = useState<User[]>([]);
   const [generalMessage, setGeneralMessage] = useState<GeneralMessage>({ text: "", type: "" });
 
@@ -142,7 +139,7 @@ export default function UsuariosPage() { // Renomeado de UserList para UsuariosP
       if (response.ok) {
         const message = await response.text();
         showGeneralMessage(message, "success");
-        setUsuarios([]); // Limpa a lista no frontend
+        setUsuarios([]);
       } else {
         const errorText = await response.text();
         showGeneralMessage(`Erro ao excluir usuários: ${errorText}`, "error");
@@ -189,7 +186,6 @@ export default function UsuariosPage() { // Renomeado de UserList para UsuariosP
         </Table>
       )}
 
-      {/* Botão de Excluir Todos os Usuários fica abaixo da tabela e centralizado */}
       <ButtonGroup>
         <DeleteButton type="button" onClick={handleDeleteAllUsers}>
           Excluir Todos os Usuários
